@@ -1,0 +1,16 @@
+.clover
+.classpath
+.project
+.settings
+*.iml
+*.ipr
+*.iws
+.idea
+target
+*.log
+*~
+xdocs
+out
+target/
+node_modules/
+.DS_Store
