@@ -143,4 +143,16 @@ public class TestSourceMap {
         sourceMap = new SourceMapImpl(sourceMapContent);
         assertThat(sourceMapContent, equalTo(sourceMap.generate()));
     }
+
+    @Test
+    public void shouldGenerateEmptyMap() {
+        assertThat((new SourceMapImpl()).generate(), equalTo(
+            "{\n" +
+            "  \"version\":3,\n" +
+            "  \"sources\":[],\n" +
+            "  \"names\":[],\n" +
+            "  \"mappings\":\";\"\n" +
+            "}"
+        ));
+    }
 }

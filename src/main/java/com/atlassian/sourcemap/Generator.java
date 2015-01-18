@@ -112,7 +112,7 @@ class Generator {
 
             appendFieldEnd(out);
 
-            out.append("\n}\n");
+            out.append("\n}");
         } catch (IOException e) { throw new RuntimeException(e); }
     }
 

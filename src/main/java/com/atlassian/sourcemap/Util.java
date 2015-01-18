@@ -2,7 +2,6 @@ package com.atlassian.sourcemap;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.CharsetEncoder;
 
 /**
  * Helpers for converting source maps.

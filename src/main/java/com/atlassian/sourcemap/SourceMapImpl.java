@@ -118,28 +118,44 @@ public class SourceMapImpl implements SourceMap {
 
         @Override
         public void addMapping(Mapping mapping) {
-            thisSourceMap.state = new Write(thisSourceMap);
-            thisSourceMap.state.addMapping(mapping);
+            switchIntoWriteState().addMapping(mapping);
         }
 
         @Override
         public String generate() {
-            throw new RuntimeException("operation generate not supported in " + this.getClass().getSimpleName() + " state!");
+            return switchIntoReadState().generate();
         }
 
         @Override
         public void eachMapping(EachMappingCallback callback) {
-            throw new RuntimeException("operation eachMapping not supported in " + this.getClass().getSimpleName() + " state!");
+            switchIntoReadState().eachMapping(callback);
         }
 
         @Override
         public Mapping getMapping(int lineNumber, int column) {
-            throw new RuntimeException("operation getMapping not supported in " + this.getClass().getSimpleName() + " state!");
+            return switchIntoReadState().getMapping(lineNumber, column);
         }
 
         @Override
         public List<String> getSourceFileNames() {
-            throw new RuntimeException("operation getSourceFileNames not supported in " + this.getClass().getSimpleName() + " state!");
+            return switchIntoReadState().getSourceFileNames();
+        }
+
+        private State switchIntoReadState() {
+            this.thisSourceMap.state = new Read(thisSourceMap, new Consumer(
+                "{\n" +
+                "  \"version\":3,\n" +
+                "  \"sources\":[],\n" +
+                "  \"names\":[],\n" +
+                "  \"mappings\":\"\"\n" +
+                "}"
+            ));
+            return this.thisSourceMap.state;
+        }
+
+        private State switchIntoWriteState() {
+            this.thisSourceMap.state = new Write(thisSourceMap);
+            return this.thisSourceMap.state;
         }
     }
 

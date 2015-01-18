@@ -26,10 +26,10 @@ public class SourceMapJoiner
     /**
      * Create joined source map by joining multiple source maps, each of it additionally could have the offset.
      * @param sourceMap source map to add.
-     * @param length length of added source map.
+     * @param length number of lines of added source map.
      * @param offset offset of added source map (note - the offset is inside of its content, not outside).
      */
-    void addSourceMap(SourceMap sourceMap, int length, int offset)
+    public void addSourceMap(SourceMap sourceMap, int length, int offset)
     {
         sourceMaps.add(new SourceMapWithOffset(sourceMap, length, offset));
     }
