@@ -19,9 +19,9 @@
     </licenses>
 
     <scm>
-        <connection>git:git@bitbucket.org:atlassian/sourcemap.git</connection>
+        <connection>scm:git:ssh://git@bitbucket.org:atlassian/sourcemap.git</connection>
+        <developerConnection>scm:git:ssh://git@bitbucket.org:atlassian/sourcemap.git</developerConnection>
         <url>https://bitbucket.org/atlassian/sourcemap</url>
-      <tag>sourcemap-1.1.0</tag>
   </scm>
 
     <dependencies>
