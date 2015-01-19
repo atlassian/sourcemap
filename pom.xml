@@ -8,7 +8,7 @@
 
     <groupId>com.atlassian.sourcemap</groupId>
     <artifactId>sourcemap</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1-SNAPSHOT</version>
 
     <licenses>
         <license>
@@ -22,7 +22,7 @@
         <connection>scm:git:ssh://git@bitbucket.org/atlassian/sourcemap.git</connection>
         <developerConnection>scm:git:ssh://git@bitbucket.org/atlassian/sourcemap.git</developerConnection>
         <url>https://bitbucket.org/atlassian/sourcemap</url>
-    <tag>sourcemap-1.2.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
     <dependencies>
