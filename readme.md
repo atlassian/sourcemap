@@ -1,4 +1,4 @@
-Parse, generate and combine Source Map files.
+Parse, generate and combine Source Map files. All line numbers and column numbers are zero-indexed.
 
 # Examples
 
