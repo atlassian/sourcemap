@@ -155,4 +155,36 @@ public class TestSourceMap {
             "}"
         ));
     }
+
+    @Test
+    public void shouldCorrectlyComputeColumnOffsets() {
+        SourceMap sourceMap =
+                new SourceMapImpl("{\"version\":3,\"file\":\"component.js\",\"sourceRoot\":\"\",\"sources\":" +
+                                          "[\"component.ts\"],\"names\":[]," +
+                                          "\"mappings\":\"AACA,MAAM,OAAO,iBAAiB;IAC1B,WAAW;QACP,MAAM,oBAAoB,CAAA;IAC9B" +
+                                          ",CAAC;CACJ\"}\n");
+
+        Mapping mapping = sourceMap.getMapping(2, 8);
+        assertThat(mapping.getSourceLine(), equalTo(3));
+        assertThat(mapping.getSourceColumn(), equalTo(8));
+    }
+
+    @Test
+    public void shouldFindSymbolNames() {
+        SourceMap sourceMap =
+                new SourceMapImpl("{\"version\":3,\"file\":\"testing-sprintf.min.js\"," +
+                                          "\"sources\":[\"../src/testing-sprintf.js\"]," +
+                                          "\"names\":[\"testing\",\"module\",\"filter\",\"sprintf\",\"apply\"," +
+                                          "\"arguments\",\"$filter\",\"format\",\"argv\",\"vsprintf\"]," +
+                                          "\"mappings\":\";;AAAAA,QACIC,OAAO,cACPC,OAAO,UAAW,WACd,MAAO,YACH,MAAOC," +
+                                          "SAAQC,MAAM,KAAMC,cAGnCH,OAAO,OAAQ,UAAW,SAASI,GAC/B,MAAOA,GAAQ,cAEnBJ,OAAO," +
+                                          "WAAY,WACf,MAAO,UAASK,EAAQC,GACpB,MAAOC,UAASF,EAAQC,MAGhCN,OAAO,QAAS,UAAW," +
+                                          "SAASI,GAChC,MAAOA,GAAQ\"}");
+
+        Mapping mapping = sourceMap.getMapping(2, 91);
+        assertThat(mapping.getSourceFileName(), equalTo("../src/testing-sprintf.js"));
+        assertThat(mapping.getSourceSymbolName(), equalTo("apply"));
+        assertThat(mapping.getSourceLine(), equalTo(4));
+        assertThat(mapping.getSourceColumn(), equalTo(27));
+    }
 }

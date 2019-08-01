@@ -207,7 +207,7 @@ class Consumer {
                     sourceFileNameIndex = vals[1] + previousSrcId;
                     sourceFileName = sourceFileNames.get(sourceFileNameIndex);
                     sourceSymbolNameIndex = vals[4] + previousNameId;
-                    sourceSymbolName = sourceSymbolNames.get(sourceFileNameIndex);
+                    sourceSymbolName = sourceSymbolNames.get(sourceSymbolNameIndex);
 
                     entry = new MappingImpl(
                         generatedLine,
