@@ -1,0 +1,11 @@
+pipeline_template: jar/Jenkinsfile-1
+email_reply_to: mc-hypergage@salesforce.com
+time_out_mins: 15
+number_of_artifacts_to_keep: 3                        # (Optional) default shown
+compliance_required: false                            # (Optional) default shown
+docker_test_images:
+  - dva/sfdc_centos7_java8_build
+unit_tests_command: echo "no tests included"
+publish_jar_image: dva/sfdc_centos7_java8_build_hypergage
+production_branch:
+  - master
